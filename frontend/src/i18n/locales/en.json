@@ -1,0 +1,289 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "organizations": "Organizations",
+    "users": "Users",
+    "projects": "Projects",
+    "audits": "Audits",
+    "findings": "Findings",
+    "templates": "Templates",
+    "notifications": "Notifications",
+    "logout": "Logout",
+    "tagline": "Security and Compliance Audit Management Platform"
+  },
+  "auth": {
+    "login": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Sign In",
+    "invalidCredentials": "Invalid email or password",
+    "visitWebsite": "Visit archrampart.com"
+  },
+  "common": {
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "search": "Search",
+    "loading": "Loading...",
+    "noData": "No data found",
+    "actions": "Actions",
+    "select": "Select",
+    "all": "All",
+    "filter": "Filter",
+    "update": "Update",
+    "copy": "Copy",
+    "download": "Download",
+    "upload": "Upload",
+    "close": "Close",
+    "confirm": "Confirm",
+    "name": "Name",
+    "description": "Description",
+    "date": "Date",
+    "status": "Status",
+    "project": "Project",
+    "standard": "Standard",
+    "optional": "Optional",
+    "required": "Required",
+    "language": "Language",
+    "turkish": "Turkish",
+    "english": "English",
+    "title": "Title",
+    "assignedTo": "Assigned To",
+    "dueDate": "Due Date",
+    "unassigned": "Unassigned",
+    "comments": "Comments",
+    "writeComment": "Write a comment... (Ctrl+Enter to send)",
+    "severity": "Severity"
+  },
+  "audits": {
+    "title": "Audits",
+    "create": "Create Audit",
+    "edit": "Edit Audit",
+    "name": "Audit Name",
+    "auditDate": "Audit Date",
+    "filterProject": "Filter Project",
+    "allProjects": "All Projects",
+    "createFromTemplate": "Create from Template",
+    "templateLanguage": "Template Language",
+    "templateLanguageDesc": "Findings created from the template will be created in this language.",
+    "dontUseTemplate": "Don't use template",
+    "downloadWord": "Download Word Report",
+    "copy": "Copy",
+    "deleteConfirm": "Are you sure you want to delete this audit?",
+    "copyPrompt": "New audit name:",
+    "error": "An error occurred",
+    "selectProject": "Please select a project"
+  },
+  "findings": {
+    "title": "Findings",
+    "create": "Create Finding",
+    "edit": "Edit Finding",
+    "filterProject": "Filter Project",
+    "filterAudit": "Filter Audit",
+    "filterStatus": "Filter Status",
+    "allProjects": "All Projects",
+    "allAudits": "All Audits",
+    "allStatuses": "All Statuses",
+    "activeStatuses": "Active Findings (Open + In Progress)",
+    "resolvedStatuses": "Resolved",
+    "myFindings": "My Findings",
+    "controlReference": "Control Reference",
+    "recommendation": "Recommendation",
+    "evidences": "Evidences",
+    "addEvidence": "Add Evidence",
+    "overdue": "Overdue",
+    "dueSoon": "Due Soon",
+    "selectAudit": "Please select an audit",
+    "deleteConfirm": "Are you sure you want to delete this finding?",
+    "deleteEvidenceConfirm": "Are you sure you want to delete this evidence?",
+    "downloadError": "Download error",
+    "deleteError": "Delete error",
+    "commentError": "Comment error",
+    "commentDeleteError": "Comment delete error"
+  },
+  "templates": {
+    "title": "Templates",
+    "create": "Create Template",
+    "edit": "Edit Template",
+    "systemTemplate": "System Template",
+    "cannotEdit": "System template cannot be edited",
+    "cannotDelete": "System template cannot be deleted",
+    "systemTemplateDesc": "This template is protected because it is a default control list. You cannot edit system templates.",
+    "systemTemplateDeleteDesc": "This template is protected because it is a default control list.",
+    "standard": "Standard",
+    "controls": "controls",
+    "deleteConfirm": "Are you sure you want to delete this template?",
+    "deleteError": "Delete error",
+    "copy": "Copy",
+    "copyPrompt": "Enter a name for the copied template:",
+    "copySuccess": "Template copied successfully!",
+    "copyError": "Error copying template"
+  },
+  "projects": {
+    "title": "Projects",
+    "create": "Create Project",
+    "edit": "Edit Project",
+    "name": "Project Name",
+    "organization": "Organization",
+    "deleteConfirm": "Are you sure you want to delete this project?",
+    "deleteError": "Delete error"
+  },
+  "organizations": {
+    "title": "Organizations",
+    "create": "Create Organization",
+    "edit": "Edit Organization",
+    "name": "Organization Name",
+    "deleteConfirm": "Are you sure you want to delete this organization?",
+    "deleteError": "Delete error"
+  },
+  "users": {
+    "title": "Users",
+    "create": "Create User",
+    "edit": "Edit User",
+    "fullName": "Full Name",
+    "email": "Email",
+    "role": "Role",
+    "organization": "Organization",
+    "deleteConfirm": "Are you sure you want to delete this user?",
+    "deleteError": "Delete error",
+    "delete": "Delete",
+    "cannotDeleteOwnAccount": "You cannot delete your own account",
+    "actions": "Actions",
+    "status": "Status",
+    "platformAdmin": "Platform Admin",
+    "orgAdmin": "Org Admin",
+    "auditor": "Auditor",
+    "active": "Active",
+    "inactive": "Inactive",
+    "noAccess": "You do not have permission to access this page.",
+    "errorOccurred": "An error occurred"
+  },
+  "severity": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "info": "Info"
+  },
+  "status": {
+    "open": "Open",
+    "in_progress": "In Progress",
+    "resolved": "Resolved",
+    "closed": "Closed",
+    "planning": "Planning",
+    "completed": "Completed",
+    "cancelled": "Cancelled"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Overview and statistics",
+    "loading": "Loading...",
+    "notifications": "Notifications",
+    "noNotifications": "No notifications",
+    "markAllAsRead": "Mark All as Read",
+    "editCards": "Edit Cards",
+    "finishEditing": "Finish Editing",
+    "loadDefaults": "Load Defaults",
+    "editModeTitle": "Card Edit Mode",
+    "editModeDesc": "You can turn card visibility on or off and change their order. Changes are saved automatically.",
+    "resetConfirm": "Are you sure you want to reset all cards to default settings?",
+    "cards": {
+      "stats_projects": "Projects",
+      "stats_audits": "Audits",
+      "stats_open_findings": "Open Findings",
+      "stats_templates": "Templates",
+      "severity_distribution": "Finding Distribution - Severity",
+      "status_distribution": "Finding Distribution - Status",
+      "welcome": "Welcome",
+      "urgent_findings": "Urgent Findings",
+      "recent_audits": "Recent Audits"
+    },
+    "seeAll": "See All",
+    "welcomeMessage": "Welcome",
+    "welcomeSubtitle": "Select an action to get started",
+    "urgentFindings": "Urgent Findings",
+    "recentAudits": "Recent Audits",
+    "noUrgentFindings": "No urgent findings",
+    "noRecentAudits": "No audits yet",
+    "findingsTrend": "Findings Trend (Last 14 Days)"
+  },
+  "search": {
+    "placeholder": "Search (Cmd/Ctrl + K)...",
+    "types": {
+      "audit": "Audit",
+      "finding": "Finding",
+      "organization": "Organization",
+      "project": "Project"
+    }
+  },
+  "notifications": {
+    "title": "Notifications",
+    "subtitle": "View all your notifications here",
+    "all": "All",
+    "unread": "Unread",
+    "read": "Read",
+    "markAsRead": "Mark as read",
+    "markAllAsRead": "Mark all as read",
+    "delete": "Delete",
+    "deleteConfirm": "Are you sure you want to delete this notification?",
+    "deleteError": "An error occurred while deleting the notification",
+    "noNotifications": "No notifications",
+    "noNotificationsDesc": "You don't have any notifications yet",
+    "relatedTo": {
+      "finding": "Finding",
+      "audit": "Audit",
+      "project": "Project",
+      "organization": "Organization"
+    },
+    "types": {
+      "finding_assigned": {
+        "title": "New Finding Assigned",
+        "message": "Finding \"{{title}}\" has been assigned to you"
+      },
+      "finding_due_soon": {
+        "title": "Finding Due Soon",
+        "message": "Finding \"{{title}}\" is due soon ({{days}} days remaining)"
+      },
+      "finding_overdue": {
+        "title": "Finding Overdue",
+        "message": "Finding \"{{title}}\" is overdue ({{days}} days)"
+      },
+      "finding_status_changed": {
+        "title": "Finding Status Changed",
+        "message": "Status of finding \"{{title}}\" has been updated to \"{{status}}\""
+      },
+      "comment_added": {
+        "title": "Comment Added to Finding",
+        "message": "A comment has been added to finding \"{{title}}\""
+      },
+      "audit_status_changed": {
+        "title": "Audit Status Changed",
+        "message": "Status of audit \"{{title}}\" has been updated to \"{{status}}\""
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Security and Compliance Audit Management Platform"
+  },
+  "profile": {
+    "changePassword": "Change Password",
+    "changeLanguage": "Change Language",
+    "password": {
+      "currentPassword": "Current Password",
+      "currentPasswordPlaceholder": "Enter your current password",
+      "newPassword": "New Password",
+      "newPasswordPlaceholder": "Enter your new password",
+      "confirmPassword": "Confirm New Password",
+      "confirmPasswordPlaceholder": "Re-enter your new password",
+      "change": "Change Password",
+      "success": "Password changed successfully",
+      "error": "Password change error",
+      "allFieldsRequired": "All fields are required",
+      "minLength": "Password must be at least 6 characters long",
+      "minLengthHint": "Minimum 6 characters",
+      "mismatch": "New passwords do not match"
+    }
+  }
+}

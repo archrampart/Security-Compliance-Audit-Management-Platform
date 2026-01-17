@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @apply bg-neutral-50 dark:bg-neutral-900 transition-colors duration-300;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+  * {
+    @apply border-neutral-200 dark:border-neutral-700;
+  }
+}
+
+@layer components {
+
+  /* Modern Card Styles with Dark Mode */
+  .card {
+    @apply bg-white dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-sm hover:shadow-md dark:shadow-neutral-900/50 transition-all duration-300 hover:-translate-y-0.5;
+  }
+
+  .card-elevated {
+    @apply bg-white dark:bg-neutral-800 rounded-xl border border-neutral-200 dark:border-neutral-700 shadow-medium hover:shadow-large dark:shadow-neutral-900/50 transition-all duration-300 hover:-translate-y-1;
+  }
+
+  /* Modern Button Styles with Dark Mode */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-accent-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-700 hover:shadow-md hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-accent-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg bg-white dark:bg-neutral-700 border border-neutral-300 dark:border-neutral-600 px-4 py-2.5 text-sm font-semibold text-neutral-700 dark:text-neutral-200 shadow-sm hover:bg-neutral-50 dark:hover:bg-neutral-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center rounded-lg bg-error-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-error-700 hover:shadow-md hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-error-500 focus:ring-offset-2 dark:focus:ring-offset-neutral-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  /* Modern Input Styles with Dark Mode */
+  .input {
+    @apply block w-full rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 px-4 py-2.5 text-sm text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-500 shadow-sm focus:border-accent-500 focus:ring-2 focus:ring-accent-200 dark:focus:ring-accent-800 focus:outline-none transition-all duration-200;
+  }
+
+  .input-error {
+    @apply block w-full rounded-lg border border-error-300 dark:border-error-600 bg-white dark:bg-neutral-800 px-4 py-2.5 text-sm text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 shadow-sm focus:border-error-500 focus:ring-2 focus:ring-error-200 dark:focus:ring-error-800 focus:outline-none transition-all duration-200;
+  }
+
+  /* Modern Select Styles with Dark Mode */
+  .select {
+    @apply block w-full rounded-lg border border-neutral-300 dark:border-neutral-600 bg-white dark:bg-neutral-800 px-4 py-2.5 text-sm text-neutral-900 dark:text-neutral-100 shadow-sm focus:border-accent-500 focus:ring-2 focus:ring-accent-200 dark:focus:ring-accent-800 focus:outline-none transition-all duration-200;
+  }
+
+  /* Modern Badge Styles */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium transition-transform hover:scale-105;
+  }
+
+  /* Modern Table Styles with Dark Mode */
+  .table-container {
+    @apply overflow-hidden rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 shadow-sm;
+  }
+
+  .table-header {
+    @apply bg-gradient-to-r from-neutral-50 to-neutral-100 dark:from-neutral-800 dark:to-neutral-700 border-b border-neutral-200 dark:border-neutral-700;
+  }
+
+  .table-row {
+    @apply border-b border-neutral-100 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-700/50 transition-colors duration-150;
+  }
+
+  .table-cell {
+    @apply px-6 py-4 text-sm text-neutral-900 dark:text-neutral-100;
+  }
+
+  /* Sidebar Dark Mode */
+  .sidebar {
+    @apply bg-gradient-to-b from-primary-50 to-primary-100 dark:from-neutral-900 dark:to-neutral-800 border-r border-primary-200 dark:border-neutral-700;
+  }
+
+  /* Loading Skeleton Animation */
+  .skeleton {
+    @apply animate-pulse bg-neutral-200 dark:bg-neutral-700 rounded;
+  }
+
+  /* Page Transitions */
+  .page-enter {
+    @apply animate-fadeIn;
+  }
+}
+
+@layer utilities {
+
+  /* Custom Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  /* Smooth scrollbar for dark mode */
+  .dark ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-neutral-800;
+  }
+
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-600 rounded-full hover:bg-neutral-500;
+  }
+}

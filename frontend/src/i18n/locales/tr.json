@@ -1,0 +1,289 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "organizations": "Organizasyonlar",
+    "users": "Kullanıcılar",
+    "projects": "Projeler",
+    "audits": "Denetimler",
+    "findings": "Bulgular",
+    "templates": "Şablonlar",
+    "notifications": "Bildirimler",
+    "logout": "Çıkış",
+    "tagline": "Güvenlik ve Uyumluluk Denetim Yönetim Platformu"
+  },
+  "auth": {
+    "login": "Giriş Yap",
+    "email": "E-posta",
+    "password": "Şifre",
+    "loginButton": "Giriş Yap",
+    "invalidCredentials": "Geçersiz e-posta veya şifre",
+    "visitWebsite": "archrampart.com adresini ziyaret edin"
+  },
+  "common": {
+    "create": "Oluştur",
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "search": "Ara",
+    "loading": "Yükleniyor...",
+    "noData": "Veri bulunamadı",
+    "actions": "İşlemler",
+    "select": "Seçiniz",
+    "all": "Tüm",
+    "filter": "Filtrele",
+    "update": "Güncelle",
+    "copy": "Kopyala",
+    "download": "İndir",
+    "upload": "Yükle",
+    "close": "Kapat",
+    "confirm": "Onayla",
+    "name": "Ad",
+    "description": "Açıklama",
+    "date": "Tarih",
+    "status": "Durum",
+    "project": "Proje",
+    "standard": "Standart",
+    "optional": "Opsiyonel",
+    "required": "Zorunlu",
+    "language": "Dil",
+    "turkish": "Türkçe",
+    "english": "English",
+    "title": "Başlık",
+    "assignedTo": "Atanan",
+    "dueDate": "Bitiş Tarihi",
+    "unassigned": "Atanmamış",
+    "comments": "Yorumlar",
+    "writeComment": "Yorum yazın... (Ctrl+Enter ile gönder)",
+    "severity": "Önem Derecesi"
+  },
+  "audits": {
+    "title": "Denetimler",
+    "create": "Oluştur Denetim",
+    "edit": "Düzenle Denetim",
+    "name": "Denetim Adı",
+    "auditDate": "Denetim Tarihi",
+    "filterProject": "Proje Filtrele",
+    "allProjects": "Tüm Projeler",
+    "createFromTemplate": "Şablondan Oluştur",
+    "templateLanguage": "Şablon Dili",
+    "templateLanguageDesc": "Şablondan oluşturulacak bulgular bu dilde oluşturulacaktır.",
+    "dontUseTemplate": "Şablon kullanma",
+    "downloadWord": "Word Raporu İndir",
+    "copy": "Kopyala",
+    "deleteConfirm": "Bu denetimi silmek istediğinizden emin misiniz?",
+    "copyPrompt": "Yeni denetim adı:",
+    "error": "Hata oluştu",
+    "selectProject": "Lütfen bir proje seçin"
+  },
+  "findings": {
+    "title": "Bulgular",
+    "create": "Oluştur Bulgu",
+    "edit": "Edit Bulgu",
+    "filterProject": "Proje Filtrele",
+    "filterAudit": "Denetim Filtrele",
+    "filterStatus": "Durum Filtrele",
+    "allProjects": "Tüm Projeler",
+    "allAudits": "Tüm Denetimler",
+    "allStatuses": "Tüm Durumlar",
+    "activeStatuses": "Aktif Bulgular (Açık + Devam Ediyor)",
+    "resolvedStatuses": "Çözüldü",
+    "myFindings": "Benim Bulgularım",
+    "controlReference": "Kontrol Referansı",
+    "recommendation": "Öneri",
+    "evidences": "Kanıtlar",
+    "addEvidence": "Kanıt Ekle",
+    "overdue": "Gecikmiş",
+    "dueSoon": "Yakında",
+    "selectAudit": "Lütfen bir denetim seçin",
+    "deleteConfirm": "Bu bulguyu silmek istediğinizden emin misiniz?",
+    "deleteEvidenceConfirm": "Bu kanıtı silmek istediğinizden emin misiniz?",
+    "downloadError": "İndirme hatası",
+    "deleteError": "Silme hatası",
+    "commentError": "Yorum ekleme hatası",
+    "commentDeleteError": "Yorum silme hatası"
+  },
+  "templates": {
+    "title": "Şablonlar",
+    "create": "Oluştur Şablon",
+    "edit": "Düzenle Şablon",
+    "systemTemplate": "Sistem Şablonu",
+    "cannotEdit": "Sistem şablonu düzenlenemez",
+    "cannotDelete": "Sistem şablonu silinemez",
+    "systemTemplateDesc": "Bu şablon varsayılan kontrol listesi olduğu için korunmaktadır. Sistem şablonlarını düzenleyemezsiniz.",
+    "systemTemplateDeleteDesc": "Bu şablon varsayılan kontrol listesi olduğu için korunmaktadır.",
+    "standard": "Standart",
+    "controls": "kontrol",
+    "deleteConfirm": "Bu şablonu silmek istediğinizden emin misiniz?",
+    "deleteError": "Silme hatası",
+    "copy": "Kopyala",
+    "copyPrompt": "Kopyalanan şablon için bir isim girin:",
+    "copySuccess": "Şablon başarıyla kopyalandı!",
+    "copyError": "Şablon kopyalanırken hata oluştu"
+  },
+  "projects": {
+    "title": "Projeler",
+    "create": "Oluştur Proje",
+    "edit": "Düzenle Proje",
+    "name": "Proje Adı",
+    "organization": "Organizasyon",
+    "deleteConfirm": "Bu projeyi silmek istediğinizden emin misiniz?",
+    "deleteError": "Silme hatası"
+  },
+  "organizations": {
+    "title": "Organizasyonlar",
+    "create": "Oluştur Organizasyon",
+    "edit": "Düzenle Organizasyon",
+    "name": "Organizasyon Adı",
+    "deleteConfirm": "Bu organizasyonu silmek istediğinizden emin misiniz?",
+    "deleteError": "Silme hatası"
+  },
+  "users": {
+    "title": "Kullanıcılar",
+    "create": "Oluştur Kullanıcı",
+    "edit": "Düzenle Kullanıcı",
+    "fullName": "Ad Soyad",
+    "email": "E-posta",
+    "role": "Rol",
+    "organization": "Organizasyon",
+    "deleteConfirm": "Bu kullanıcıyı silmek istediğinizden emin misiniz?",
+    "deleteError": "Silme hatası",
+    "delete": "Sil",
+    "cannotDeleteOwnAccount": "Kendi hesabınızı silemezsiniz",
+    "actions": "İşlemler",
+    "status": "Durum",
+    "platformAdmin": "Platform Admin",
+    "orgAdmin": "Org Admin",
+    "auditor": "Auditor",
+    "active": "Aktif",
+    "inactive": "Pasif",
+    "noAccess": "Bu sayfaya erişim yetkiniz yok.",
+    "errorOccurred": "Hata oluştu"
+  },
+  "severity": {
+    "critical": "Kritik",
+    "high": "Yüksek",
+    "medium": "Orta",
+    "low": "Düşük",
+    "info": "Bilgi"
+  },
+  "status": {
+    "open": "Açık",
+    "in_progress": "Devam Ediyor",
+    "resolved": "Çözüldü",
+    "closed": "Kapatıldı",
+    "planning": "Planlama",
+    "completed": "Tamamlandı",
+    "cancelled": "İptal Edildi"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Genel bakış ve istatistikler",
+    "loading": "Yükleniyor...",
+    "notifications": "Bildirimler",
+    "noNotifications": "Bildirim yok",
+    "markAllAsRead": "Tümünü Okundu İşaretle",
+    "editCards": "Kartları Düzenle",
+    "finishEditing": "Düzenlemeyi Bitir",
+    "loadDefaults": "Varsayılanları Yükle",
+    "editModeTitle": "Kart Düzenleme Modu",
+    "editModeDesc": "Kartların görünürlüğünü açıp kapatabilir, sıralarını değiştirebilirsiniz. Değişiklikler otomatik olarak kaydedilir.",
+    "resetConfirm": "Tüm kartları varsayılan ayarlara döndürmek istediğinizden emin misiniz?",
+    "cards": {
+      "stats_projects": "Projeler",
+      "stats_audits": "Denetimler",
+      "stats_open_findings": "Açık Bulgular",
+      "stats_templates": "Şablonlar",
+      "severity_distribution": "Bulgu Dağılımı - Önem",
+      "status_distribution": "Bulgu Dağılımı - Durum",
+      "welcome": "Hoş Geldiniz",
+      "urgent_findings": "Acil Bulgular",
+      "recent_audits": "Son Denetimler"
+    },
+    "seeAll": "Tümünü Gör",
+    "welcomeMessage": "Hoş Geldiniz",
+    "welcomeSubtitle": "Başlamak için bir işlem seçin",
+    "urgentFindings": "Acil Bulgular",
+    "recentAudits": "Son Denetimler",
+    "noUrgentFindings": "Acil bulgu bulunmamaktadır",
+    "noRecentAudits": "Henüz denetim bulunmamaktadır",
+    "findingsTrend": "Bulgu Trendi (Son 14 Gün)"
+  },
+  "search": {
+    "placeholder": "Ara (Cmd/Ctrl + K)...",
+    "types": {
+      "audit": "Denetim",
+      "finding": "Bulgu",
+      "organization": "Organizasyon",
+      "project": "Proje"
+    }
+  },
+  "notifications": {
+    "title": "Bildirimler",
+    "subtitle": "Tüm bildirimlerinizi burada görüntüleyebilirsiniz",
+    "all": "Tümü",
+    "unread": "Okunmamış",
+    "read": "Okunmuş",
+    "markAsRead": "Okundu işaretle",
+    "markAllAsRead": "Tümünü okundu işaretle",
+    "delete": "Sil",
+    "deleteConfirm": "Bu bildirimi silmek istediğinize emin misiniz?",
+    "deleteError": "Bildirim silinirken bir hata oluştu",
+    "noNotifications": "Bildirim bulunmuyor",
+    "noNotificationsDesc": "Henüz hiç bildiriminiz yok",
+    "relatedTo": {
+      "finding": "Bulgu",
+      "audit": "Denetim",
+      "project": "Proje",
+      "organization": "Organizasyon"
+    },
+    "types": {
+      "finding_assigned": {
+        "title": "Yeni Bulgu Atandı",
+        "message": "\"{{title}}\" bulgusu size atandı"
+      },
+      "finding_due_soon": {
+        "title": "Bulgu Yakında Son Tarih",
+        "message": "\"{{title}}\" bulgusu yakında son tarih ({{days}} gün kaldı)"
+      },
+      "finding_overdue": {
+        "title": "Bulgu Son Tarih Geçti",
+        "message": "\"{{title}}\" bulgusu son tarih geçti ({{days}} gün)"
+      },
+      "finding_status_changed": {
+        "title": "Bulgu Durumu Değişti",
+        "message": "\"{{title}}\" bulgusunun durumu \"{{status}}\" olarak güncellendi"
+      },
+      "comment_added": {
+        "title": "Bulguya Yorum Eklendi",
+        "message": "\"{{title}}\" bulgusuna yorum eklendi"
+      },
+      "audit_status_changed": {
+        "title": "Denetim Durumu Değişti",
+        "message": "\"{{title}}\" denetiminin durumu \"{{status}}\" olarak güncellendi"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Güvenlik ve Uyumluluk Denetimi Yönetim Platformu"
+  },
+  "profile": {
+    "changePassword": "Şifre Değiştir",
+    "changeLanguage": "Dil Değiştir",
+    "password": {
+      "currentPassword": "Mevcut Şifre",
+      "currentPasswordPlaceholder": "Mevcut şifrenizi girin",
+      "newPassword": "Yeni Şifre",
+      "newPasswordPlaceholder": "Yeni şifrenizi girin",
+      "confirmPassword": "Yeni Şifre (Tekrar)",
+      "confirmPasswordPlaceholder": "Yeni şifrenizi tekrar girin",
+      "change": "Şifreyi Değiştir",
+      "success": "Şifreniz başarıyla değiştirildi",
+      "error": "Şifre değiştirme hatası",
+      "allFieldsRequired": "Tüm alanlar zorunludur",
+      "minLength": "Şifre en az 6 karakter olmalıdır",
+      "minLengthHint": "Minimum 6 karakter",
+      "mismatch": "Yeni şifreler eşleşmiyor"
+    }
+  }
+}
