@@ -8,10 +8,13 @@ import { projectsApi } from '../api/projects'
 import { usersApi } from '../api/users'
 import { useAuthStore } from '../store/authStore'
 import { Plus, Edit, Trash2, AlertCircle, Upload, X, Image as ImageIcon, File, Download, User, Calendar, MessageSquare, Send, CheckCircle2 } from 'lucide-react'
+import { useConfirmDialog } from '../store/confirmDialogStore'
+import { CardSkeleton } from '../components/ui/Skeleton'
 
 export default function Findings() {
   const { t } = useTranslation()
   const { user: currentUser } = useAuthStore()
+  const { openDialog } = useConfirmDialog()
   const [searchParams, setSearchParams] = useSearchParams()
   const [findings, setFindings] = useState<Finding[]>([])
   const [audits, setAudits] = useState<any[]>([])
@@ -71,17 +74,21 @@ export default function Findings() {
   }
 
   const handleBulkDelete = async () => {
-    if (!confirm(t('findings.bulkDeleteConfirm') || `Are you sure you want to delete ${selectedFindings.size} findings?`)) return
-
-    try {
-      await Promise.all(Array.from(selectedFindings).map(id => findingsApi.delete(id)))
-      setSelectedFindings(new Set())
-      loadFindings()
-      alert(t('findings.bulkDeleteSuccess') || 'Selected findings deleted successfully')
-    } catch (error: any) {
-      console.error('Error deleting findings:', error)
-      alert(error.response?.data?.detail || t('findings.deleteError'))
-    }
+    openDialog(
+      t('findings.bulkDeleteConfirm') || `Are you sure you want to delete ${selectedFindings.size} findings?`,
+      async () => {
+        try {
+          await Promise.all(Array.from(selectedFindings).map(id => findingsApi.delete(id)))
+          setSelectedFindings(new Set())
+          loadFindings()
+          alert(t('findings.bulkDeleteSuccess') || 'Selected findings deleted successfully')
+        } catch (error: any) {
+          console.error('Error deleting findings:', error)
+          alert(error.response?.data?.detail || t('findings.deleteError'))
+        }
+      },
+      t('common.delete')
+    )
   }
 
   const severities: Severity[] = ['critical', 'high', 'medium', 'low', 'info']
@@ -207,14 +214,19 @@ export default function Findings() {
   }
 
   const handleDelete = async (id: number) => {
-    if (!confirm(t('findings.deleteConfirm'))) return
-    try {
-      await findingsApi.delete(id)
-      loadFindings()
-    } catch (error: any) {
-      console.error('Error deleting finding:', error)
-      alert(error.response?.data?.detail || 'Silme hatası')
-    }
+    openDialog(
+      t('findings.deleteConfirm'),
+      async () => {
+        try {
+          await findingsApi.delete(id)
+          loadFindings()
+        } catch (error: any) {
+          console.error('Error deleting finding:', error)
+          alert(error.response?.data?.detail || 'Silme hatası')
+        }
+      },
+      t('common.delete')
+    )
   }
 
   const handleEdit = useCallback(async (finding: Finding) => {
@@ -314,21 +326,24 @@ export default function Findings() {
   }
 
   const handleDeleteComment = async (commentId: number, findingId: number) => {
-    if (!confirm('Bu yorumu silmek istediğinizden emin misiniz?')) return
-
-    try {
-      await findingsApi.deleteComment(commentId)
-      // Reload finding to get updated comments
-      // Reload finding to get updated comments
-      if (editing?.id === findingId) {
-        const updatedFinding = await findingsApi.getById(findingId)
-        setEditing(updatedFinding.data)
-      }
-      loadFindings()
-    } catch (error: any) {
-      console.error('Error deleting comment:', error)
-      alert(error.response?.data?.detail || t('findings.commentDeleteError') || 'Comment delete error')
-    }
+    openDialog(
+      t('findings.deleteCommentConfirm') || 'Bu yorumu silmek istediğinizden emin misiniz?',
+      async () => {
+        try {
+          await findingsApi.deleteComment(commentId)
+          // Reload finding to get updated comments
+          if (editing?.id === findingId) {
+            const updatedFinding = await findingsApi.getById(findingId)
+            setEditing(updatedFinding.data)
+          }
+          loadFindings()
+        } catch (error: any) {
+          console.error('Error deleting comment:', error)
+          alert(error.response?.data?.detail || t('findings.commentDeleteError') || 'Comment delete error')
+        }
+      },
+      t('common.delete')
+    )
   }
 
   const resetForm = () => {
@@ -494,11 +509,10 @@ export default function Findings() {
       )}
 
       {loading ? (
-        <div className="flex items-center justify-center py-16">
-          <div className="text-center">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-accent-600 border-r-transparent"></div>
-            <p className="mt-4 text-neutral-600 font-medium">{t('common.loading')}</p>
-          </div>
+        <div className="space-y-4">
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
         </div>
       ) : findings.length === 0 ? (
         <div className="card-elevated p-16 text-center">
@@ -690,7 +704,7 @@ export default function Findings() {
                             ))}
                           </div>
                         ) : (
-                          <p className="text-sm text-neutral-500">Henüz kanıt eklenmemiş</p>
+                          <p className="text-sm text-neutral-500">{t('findings.noEvidence')}</p>
                         )}
                       </div>
 

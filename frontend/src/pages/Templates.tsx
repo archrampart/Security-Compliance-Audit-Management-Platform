@@ -6,10 +6,12 @@ import { AuditStandard } from '../api/audits'
 import { organizationsApi } from '../api/organizations'
 import { Plus, Edit, Trash2, FileText, ChevronDown, ChevronRight, Copy } from 'lucide-react'
 import { Severity, Status } from '../api/findings'
+import { useConfirmDialog } from '../store/confirmDialogStore'
 
 export default function Templates() {
   const { t, i18n } = useTranslation()
   const { user: currentUser } = useAuthStore()
+  const { openDialog } = useConfirmDialog()
   const [templates, setTemplates] = useState<Template[]>([])
   const [organizations, setOrganizations] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -104,21 +106,25 @@ export default function Templates() {
       return
     }
 
-    if (!confirm(t('templates.deleteConfirm'))) return
-
-    try {
-      await templatesApi.delete(id)
-      loadTemplates()
-    } catch (error: any) {
-      console.error('Error deleting template:', error)
-      const errorMessage = error.response?.data?.detail || t('templates.deleteError')
-      // If backend returns error about system template, show it
-      if (errorMessage.includes('Sistem şablonu') || errorMessage.includes('sistem şablonu')) {
-        alert(`❌ ${errorMessage}`)
-      } else {
-        alert(`❌ ${errorMessage}`)
-      }
-    }
+    openDialog(
+      t('templates.deleteConfirm'),
+      async () => {
+        try {
+          await templatesApi.delete(id)
+          loadTemplates()
+        } catch (error: any) {
+          console.error('Error deleting template:', error)
+          const errorMessage = error.response?.data?.detail || t('templates.deleteError')
+          // If backend returns error about system template, show it
+          if (errorMessage.includes('Sistem şablonu') || errorMessage.includes('sistem şablonu')) {
+            alert(`❌ ${errorMessage}`)
+          } else {
+            alert(`❌ ${errorMessage}`)
+          }
+        }
+      },
+      t('common.delete')
+    )
   }
 
   const handleCopy = async (template: Template) => {
@@ -274,14 +280,14 @@ export default function Templates() {
                         )}
                       </button>
                       <div>
-                        <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{template.name}</h3>
+                        <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{i18n.language === 'en' && template.name_en ? template.name_en : template.name}</h3>
                         <p className="text-sm text-neutral-600 dark:text-neutral-400">
                           {t('templates.standard')}: {template.standard} | {template.items.length} {t('templates.controls')}
                         </p>
                       </div>
                     </div>
-                    {template.description && (
-                      <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">{template.description}</p>
+                    {(template.description || template.description_en) && (
+                      <p className="mt-2 text-sm text-neutral-700 dark:text-neutral-300">{i18n.language === 'en' && template.description_en ? template.description_en : template.description}</p>
                     )}
                   </div>
                   <div className="flex space-x-2 items-center">

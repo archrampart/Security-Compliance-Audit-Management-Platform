@@ -6,6 +6,7 @@
     "projects": "Projects",
     "audits": "Audits",
     "findings": "Findings",
+    "reports": "Reports",
     "templates": "Templates",
     "notifications": "Notifications",
     "logout": "Logout",
@@ -55,7 +56,8 @@
     "unassigned": "Unassigned",
     "comments": "Comments",
     "writeComment": "Write a comment... (Ctrl+Enter to send)",
-    "severity": "Severity"
+    "severity": "Severity",
+    "allProjects": "All Projects"
   },
   "audits": {
     "title": "Audits",
@@ -74,7 +76,8 @@
     "deleteConfirm": "Are you sure you want to delete this audit?",
     "copyPrompt": "New audit name:",
     "error": "An error occurred",
-    "selectProject": "Please select a project"
+    "selectProject": "Please select a project",
+    "findings": "Findings"
   },
   "findings": {
     "title": "Findings",
@@ -101,7 +104,8 @@
     "downloadError": "Download error",
     "deleteError": "Delete error",
     "commentError": "Comment error",
-    "commentDeleteError": "Comment delete error"
+    "commentDeleteError": "Comment delete error",
+    "noEvidence": "No evidence added yet"
   },
   "templates": {
     "title": "Templates",
@@ -129,6 +133,13 @@
     "organization": "Organization",
     "deleteConfirm": "Are you sure you want to delete this project?",
     "deleteError": "Delete error"
+  },
+  "reports": {
+    "title": "Reports",
+    "description": "Download audit reports in Word format",
+    "downloadWord": "Download Word",
+    "noReports": "No reports available",
+    "noReportsHint": "Audits matching your filters will appear here"
   },
   "organizations": {
     "title": "Organizations",

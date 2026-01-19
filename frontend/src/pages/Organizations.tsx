@@ -3,10 +3,12 @@ import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '../store/authStore'
 import { organizationsApi, Organization, OrganizationCreate } from '../api/organizations'
 import { Plus, Edit, Trash2, Building2 } from 'lucide-react'
+import { useConfirmDialog } from '../store/confirmDialogStore'
 
 export default function Organizations() {
   const { t } = useTranslation()
   const { user } = useAuthStore()
+  const { openDialog } = useConfirmDialog()
   const [organizations, setOrganizations] = useState<Organization[]>([])
   const [loading, setLoading] = useState(true)
   const [showModal, setShowModal] = useState(false)
@@ -52,14 +54,19 @@ export default function Organizations() {
   }
 
   const handleDelete = async (id: number) => {
-    if (!confirm(t('organizations.deleteConfirm'))) return
-    try {
-      await organizationsApi.delete(id)
-      loadOrganizations()
-    } catch (error: any) {
-      console.error('Error deleting organization:', error)
-      alert(error.response?.data?.detail || t('organizations.deleteError'))
-    }
+    openDialog(
+      t('organizations.deleteConfirm'),
+      async () => {
+        try {
+          await organizationsApi.delete(id)
+          loadOrganizations()
+        } catch (error: any) {
+          console.error('Error deleting organization:', error)
+          alert(error.response?.data?.detail || t('organizations.deleteError'))
+        }
+      },
+      t('common.delete')
+    )
   }
 
   const handleEdit = (org: Organization) => {

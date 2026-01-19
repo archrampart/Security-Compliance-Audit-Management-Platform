@@ -10,6 +10,7 @@ import { analyticsApi } from '../api/analytics'
 import { notificationsApi } from '../api/notifications'
 import { useAuthStore } from '../store/authStore'
 import TrendChart from '../components/TrendChart'
+import { Skeleton, CardSkeleton } from '../components/ui/Skeleton'
 
 interface DashboardCard {
   id: string
@@ -350,8 +351,27 @@ export default function Dashboard() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-neutral-600">{t('dashboard.loading')}</div>
+      <div>
+        <div className="mb-10 flex items-center justify-between">
+          <div className="space-y-2">
+            <Skeleton className="h-10 w-48" />
+            <Skeleton className="h-6 w-64" />
+          </div>
+          <Skeleton className="h-10 w-32" />
+        </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+        </div>
+        <div className="mb-8">
+          <Skeleton className="h-[300px] w-full rounded-xl" />
+        </div>
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <Skeleton className="h-[300px] rounded-xl" />
+          <Skeleton className="h-[300px] rounded-xl" />
+        </div>
       </div>
     )
   }

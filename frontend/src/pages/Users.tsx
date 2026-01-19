@@ -4,10 +4,12 @@ import { useAuthStore } from '../store/authStore'
 import { usersApi, User, UserCreate } from '../api/users'
 import { organizationsApi } from '../api/organizations'
 import { Plus, Edit, Trash2, User as UserIcon } from 'lucide-react'
+import { useConfirmDialog } from '../store/confirmDialogStore'
 
 export default function Users() {
   const { t } = useTranslation()
   const { user: currentUser } = useAuthStore()
+  const { openDialog } = useConfirmDialog()
   const [users, setUsers] = useState<User[]>([])
   const [organizations, setOrganizations] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
@@ -77,14 +79,19 @@ export default function Users() {
   }
 
   const handleDelete = async (id: number) => {
-    if (!confirm(t('users.deleteConfirm'))) return
-    try {
-      await usersApi.delete(id)
-      loadUsers()
-    } catch (error: any) {
-      console.error('Error deleting user:', error)
-      alert(error.response?.data?.detail || t('users.deleteError'))
-    }
+    openDialog(
+      t('users.deleteConfirm'),
+      async () => {
+        try {
+          await usersApi.delete(id)
+          loadUsers()
+        } catch (error: any) {
+          console.error('Error deleting user:', error)
+          alert(error.response?.data?.detail || t('users.deleteError'))
+        }
+      },
+      t('common.delete')
+    )
   }
 
   const handleEdit = (user: User) => {

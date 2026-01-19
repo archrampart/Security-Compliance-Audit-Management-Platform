@@ -6,11 +6,14 @@ import { auditsApi, Audit, AuditCreate, AuditStandard, AuditStatus } from '../ap
 import { projectsApi } from '../api/projects'
 import { templatesApi } from '../api/templates'
 import { Plus, Edit, Trash2, Copy, FileCheck, FileText, X } from 'lucide-react'
+import { useConfirmDialog } from '../store/confirmDialogStore'
+import { TableRowSkeleton } from '../components/ui/Skeleton'
 
 
 export default function Audits() {
   const { t, i18n } = useTranslation()
   const { user: currentUser } = useAuthStore()
+  const { openDialog } = useConfirmDialog()
   const [searchParams, setSearchParams] = useSearchParams()
   const [audits, setAudits] = useState<Audit[]>([])
   const [projects, setProjects] = useState<any[]>([])
@@ -54,20 +57,21 @@ export default function Audits() {
   }
 
   const handleBulkDelete = async () => {
-    if (!confirm(t('audits.bulkDeleteConfirm') || `Are you sure you want to delete ${selectedAudits.size} audits?`)) return
-
-    try {
-      // In a real scenario, backend should support bulk delete. 
-      // For now, we'll do it sequentially or use Promise.all
-      // Assuming we implement a bulk delete endpoint or just loop
-      await Promise.all(Array.from(selectedAudits).map(id => auditsApi.delete(id)))
-      setSelectedAudits(new Set())
-      loadAudits()
-      alert(t('audits.bulkDeleteSuccess') || 'Selected audits deleted successfully')
-    } catch (error: any) {
-      console.error('Error deleting audits:', error)
-      alert(error.response?.data?.detail || t('audits.deleteError'))
-    }
+    openDialog(
+      t('audits.bulkDeleteConfirm') || `Are you sure you want to delete ${selectedAudits.size} audits?`,
+      async () => {
+        try {
+          await Promise.all(Array.from(selectedAudits).map(id => auditsApi.delete(id)))
+          setSelectedAudits(new Set())
+          loadAudits()
+          alert(t('audits.bulkDeleteSuccess') || 'Selected audits deleted successfully')
+        } catch (error: any) {
+          console.error('Error deleting audits:', error)
+          alert(error.response?.data?.detail || t('audits.deleteError'))
+        }
+      },
+      t('common.delete')
+    )
   }
 
   const standards: AuditStandard[] = ['ISO27001', 'PCI_DSS', 'KVKK', 'GDPR', 'NIST', 'CIS', 'SOC2', 'OWASP_TOP10', 'OWASP_ASVS', 'OWASP_API', 'OWASP_MOBILE', 'ISO27017', 'ISO27018', 'HIPAA', 'COBIT', 'ENISA', 'CMMC', 'FEDRAMP', 'ITIL', 'OTHER']
@@ -201,14 +205,19 @@ export default function Audits() {
   }
 
   const handleDelete = async (id: number) => {
-    if (!confirm(t('audits.deleteConfirm'))) return
-    try {
-      await auditsApi.delete(id)
-      loadAudits()
-    } catch (error: any) {
-      console.error('Error deleting audit:', error)
-      alert(error.response?.data?.detail || t('common.delete') + ' ' + t('audits.error'))
-    }
+    openDialog(
+      t('audits.deleteConfirm'),
+      async () => {
+        try {
+          await auditsApi.delete(id)
+          loadAudits()
+        } catch (error: any) {
+          console.error('Error deleting audit:', error)
+          alert(error.response?.data?.detail || t('common.delete') + ' ' + t('audits.error'))
+        }
+      },
+      t('common.delete')
+    )
   }
 
   const handleCopy = async (id: number) => {
@@ -381,10 +390,16 @@ export default function Audits() {
       )}
 
       {loading ? (
-        <div className="flex items-center justify-center py-16">
-          <div className="text-center">
-            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-accent-600 border-r-transparent"></div>
-            <p className="mt-4 text-neutral-600 font-medium">{t('common.loading')}</p>
+        <div className="card-elevated overflow-hidden">
+          <div className="p-4 border-b border-neutral-200 dark:border-neutral-700">
+            <div className="h-6 w-32 bg-neutral-200 dark:bg-neutral-700 rounded animate-pulse" />
+          </div>
+          <div>
+            <TableRowSkeleton cols={7} />
+            <TableRowSkeleton cols={7} />
+            <TableRowSkeleton cols={7} />
+            <TableRowSkeleton cols={7} />
+            <TableRowSkeleton cols={7} />
           </div>
         </div>
       ) : audits.length === 0 ? (
@@ -599,7 +614,7 @@ export default function Audits() {
                         .filter(t => t.standard === formData.standard)
                         .map((template) => (
                           <option key={template.id} value={template.id}>
-                            {template.name}
+                            {i18n.language === 'en' && template.name_en ? template.name_en : template.name}
                           </option>
                         ))}
                     </select>

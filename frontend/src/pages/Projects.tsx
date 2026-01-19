@@ -5,10 +5,12 @@ import { projectsApi, Project, ProjectCreate } from '../api/projects'
 import { organizationsApi } from '../api/organizations'
 import { usersApi } from '../api/users'
 import { Plus, Edit, Trash2, Copy, FolderOpen } from 'lucide-react'
+import { useConfirmDialog } from '../store/confirmDialogStore'
 
 export default function Projects() {
   const { t } = useTranslation()
   const { user: currentUser } = useAuthStore()
+  const { openDialog } = useConfirmDialog()
   const [projects, setProjects] = useState<Project[]>([])
   const [organizations, setOrganizations] = useState<any[]>([])
   const [users, setUsers] = useState<any[]>([])
@@ -89,14 +91,19 @@ export default function Projects() {
   }
 
   const handleDelete = async (id: number) => {
-    if (!confirm(t('projects.deleteConfirm'))) return
-    try {
-      await projectsApi.delete(id)
-      loadProjects()
-    } catch (error: any) {
-      console.error('Error deleting project:', error)
-      alert(error.response?.data?.detail || t('projects.deleteError'))
-    }
+    openDialog(
+      t('projects.deleteConfirm'),
+      async () => {
+        try {
+          await projectsApi.delete(id)
+          loadProjects()
+        } catch (error: any) {
+          console.error('Error deleting project:', error)
+          alert(error.response?.data?.detail || t('projects.deleteError'))
+        }
+      },
+      t('common.delete')
+    )
   }
 
   const handleCopy = async (id: number) => {

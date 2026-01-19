@@ -23,6 +23,7 @@ import {
   User as UserIcon,
   Moon,
   Sun,
+  BarChart3,
 } from 'lucide-react'
 
 export default function Layout() {
@@ -108,6 +109,7 @@ export default function Layout() {
     { path: '/projects', icon: FolderOpen, label: t('nav.projects') },
     { path: '/audits', icon: FileCheck, label: t('nav.audits') },
     { path: '/findings', icon: AlertCircle, label: t('nav.findings') },
+    { path: '/reports', icon: BarChart3, label: t('nav.reports') },
     { path: '/templates', icon: FileText, label: t('nav.templates') },
     { path: '/notifications', icon: Bell, label: t('nav.notifications') },
   ].filter((item) => {

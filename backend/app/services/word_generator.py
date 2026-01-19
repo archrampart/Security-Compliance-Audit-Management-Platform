@@ -13,7 +13,12 @@ from app.models.audit import Audit
 from app.models.template import Severity, Status
 from datetime import datetime
 import tempfile
+import os
 from collections import Counter
+from app.core.config import settings
+
+# Image extensions that can be embedded in Word
+IMAGE_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.gif', '.webp'}
 
 # i18n Translations for reports
 TRANSLATIONS = {
@@ -378,12 +383,52 @@ def add_findings_section(doc: Document, findings, lang: str = "tr"):
             evid_para.add_run().font.size = Pt(11)
             
             for evidence in finding.evidences:
-                evid_item = doc.add_paragraph(f"  • {evidence.file_name}", style='List Bullet')
-                evid_item.runs[0].font.size = Pt(10)
-                if evidence.description:
-                    evid_desc = doc.add_paragraph(f"    {get_translation('evidence_desc', lang)}: {evidence.description}", style='List Bullet 2')
-                    evid_desc.runs[0].font.size = Pt(9)
-                    evid_desc.runs[0].font.color.rgb = RGBColor(107, 114, 128)
+                # Get file extension
+                file_ext = os.path.splitext(evidence.file_name)[1].lower()
+                
+                # Check if it's an image that can be embedded
+                if file_ext in IMAGE_EXTENSIONS:
+                    # Try to embed the image
+                    file_path = os.path.join(settings.UPLOAD_DIR, evidence.file_path)
+                    if os.path.exists(file_path):
+                        try:
+                            # Add image with max width of 5 inches
+                            doc.add_paragraph()  # Add spacing before image
+                            img_para = doc.add_paragraph()
+                            img_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                            run = img_para.add_run()
+                            run.add_picture(file_path, width=Inches(5))
+                            
+                            # Add caption below image
+                            caption_para = doc.add_paragraph()
+                            caption_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                            caption_run = caption_para.add_run(f"📷 {evidence.file_name}")
+                            caption_run.font.size = Pt(9)
+                            caption_run.font.italic = True
+                            caption_run.font.color.rgb = RGBColor(107, 114, 128)
+                            
+                            if evidence.description:
+                                desc_para = doc.add_paragraph()
+                                desc_para.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                                desc_run = desc_para.add_run(evidence.description)
+                                desc_run.font.size = Pt(9)
+                                desc_run.font.color.rgb = RGBColor(107, 114, 128)
+                        except Exception as e:
+                            # If image embedding fails, fall back to text listing
+                            evid_item = doc.add_paragraph(f"  • {evidence.file_name} (görüntü yüklenemedi)", style='List Bullet')
+                            evid_item.runs[0].font.size = Pt(10)
+                    else:
+                        # File not found, list as text
+                        evid_item = doc.add_paragraph(f"  • {evidence.file_name} (dosya bulunamadı)", style='List Bullet')
+                        evid_item.runs[0].font.size = Pt(10)
+                else:
+                    # Non-image files: list as before
+                    evid_item = doc.add_paragraph(f"  • {evidence.file_name}", style='List Bullet')
+                    evid_item.runs[0].font.size = Pt(10)
+                    if evidence.description:
+                        evid_desc = doc.add_paragraph(f"    {get_translation('evidence_desc', lang)}: {evidence.description}", style='List Bullet 2')
+                        evid_desc.runs[0].font.size = Pt(9)
+                        evid_desc.runs[0].font.color.rgb = RGBColor(107, 114, 128)
         
         # Add spacing between findings
         doc.add_paragraph()

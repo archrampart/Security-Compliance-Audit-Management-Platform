@@ -19,7 +19,9 @@ export interface TemplateItem {
 export interface Template {
   id: number
   name: string
+  name_en?: string
   description?: string
+  description_en?: string
   standard: AuditStandard
   organization_id: number
   is_system?: boolean
@@ -70,9 +72,9 @@ export const templatesApi = {
   copy: (id: number, newName?: string) => {
     return apiClient.post<Template>(`/templates/${id}/copy`, { new_name: newName || null })
   },
-  createItem: (templateId: number, data: TemplateItemCreate) => 
+  createItem: (templateId: number, data: TemplateItemCreate) =>
     apiClient.post<TemplateItem>(`/templates/${templateId}/items`, data),
-  updateItem: (itemId: number, data: TemplateItemCreate) => 
+  updateItem: (itemId: number, data: TemplateItemCreate) =>
     apiClient.put<TemplateItem>(`/templates/items/${itemId}`, data),
   deleteItem: (itemId: number) => apiClient.delete(`/templates/items/${itemId}`),
 }

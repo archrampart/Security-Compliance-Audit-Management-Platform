@@ -13,6 +13,11 @@ export interface Audit {
   status: AuditStatus
   created_at: string
   updated_at?: string
+  findings_count?: number
+  project?: {
+    id: number
+    name: string
+  }
 }
 
 export interface AuditCreate {
@@ -45,5 +50,6 @@ export const auditsApi = {
   delete: (id: number) => apiClient.delete(`/audits/${id}`),
   copy: (id: number, newName: string) => apiClient.post<Audit>(`/audits/${id}/copy?new_name=${encodeURIComponent(newName)}`),
   generateWord: (id: number) => apiClient.get(`/reports/audit/${id}/word`, { responseType: 'blob' }),
+  downloadWordReport: (id: number) => apiClient.get(`/reports/audit/${id}/word`, { responseType: 'blob' }),
 }
 

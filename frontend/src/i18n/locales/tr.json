@@ -6,6 +6,7 @@
     "projects": "Projeler",
     "audits": "Denetimler",
     "findings": "Bulgular",
+    "reports": "Raporlar",
     "templates": "Şablonlar",
     "notifications": "Bildirimler",
     "logout": "Çıkış",
@@ -55,7 +56,8 @@
     "unassigned": "Atanmamış",
     "comments": "Yorumlar",
     "writeComment": "Yorum yazın... (Ctrl+Enter ile gönder)",
-    "severity": "Önem Derecesi"
+    "severity": "Önem Derecesi",
+    "allProjects": "Tüm Projeler"
   },
   "audits": {
     "title": "Denetimler",
@@ -74,7 +76,8 @@
     "deleteConfirm": "Bu denetimi silmek istediğinizden emin misiniz?",
     "copyPrompt": "Yeni denetim adı:",
     "error": "Hata oluştu",
-    "selectProject": "Lütfen bir proje seçin"
+    "selectProject": "Lütfen bir proje seçin",
+    "findings": "Bulgular"
   },
   "findings": {
     "title": "Bulgular",
@@ -101,7 +104,8 @@
     "downloadError": "İndirme hatası",
     "deleteError": "Silme hatası",
     "commentError": "Yorum ekleme hatası",
-    "commentDeleteError": "Yorum silme hatası"
+    "commentDeleteError": "Yorum silme hatası",
+    "noEvidence": "Henüz kanıt eklenmemiş"
   },
   "templates": {
     "title": "Şablonlar",
@@ -129,6 +133,13 @@
     "organization": "Organizasyon",
     "deleteConfirm": "Bu projeyi silmek istediğinizden emin misiniz?",
     "deleteError": "Silme hatası"
+  },
+  "reports": {
+    "title": "Raporlar",
+    "description": "Denetim raporlarını Word formatında indirin",
+    "downloadWord": "Word İndir",
+    "noReports": "Henüz rapor yok",
+    "noReportsHint": "Filtrelerinize uyan denetimler burada görünecek"
   },
   "organizations": {
     "title": "Organizasyonlar",

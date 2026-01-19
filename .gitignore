@@ -50,3 +50,9 @@ uploads/
 *.log
 backend.log
 frontend.log
+
+# Temporary scripts
+create_gif.py
+
+# Local screenshots (not for Git)
+screenshots/
