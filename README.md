@@ -6,6 +6,10 @@
 
 ArchRampart Audit Tool is a comprehensive audit management system designed to professionally plan, execute, monitor, and report enterprise security and compliance audits. It enables organizations to efficiently manage information security, cybersecurity, and compliance audits through a centralized platform.
 
+## 📸 Demo
+
+![App Demo](docs/app_demo.gif)
+
 ---
 
 ## 🇹🇷 Turkish / 🇬🇧 English
